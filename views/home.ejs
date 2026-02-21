@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nexora</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">🤖 Nexora</div>
+
+    <div class="nav-right">
+        <% if (user) { %>
+            <span><%= user.username %></span>
+            <a href="/logout">
+                <button class="btn-secondary">Déconnexion</button>
+            </a>
+        <% } else { %>
+            <a href="https://discord.com/oauth2/authorize?client_id=<%= process.env.CLIENT_ID %>&permissions=8&scope=bot%20applications.commands">
+                <button class="btn-primary">Se connecter avec Discord</button>
+            </a>
+        <% } %>
+    </div>
+</div>
+
+<% if (!user) { %>
+
+<div class="hero">
+    <h1>Le meilleur bot<br>tout-en-un<br>pour Discord</h1>
+
+    <p>
+        Nexora est un bot Discord complet, moderne et puissant
+        pour gérer et automatiser votre serveur.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="https://discord.com/oauth2/authorize?client_id=1474345334648864891&permissions=8&integration_type=0&scope=bot+applications.commands">
+            <button class="btn-primary">Ajouter à Discord</button>
+        </a>
+
+        <button class="btn-secondary">Voir les fonctionnalités</button>
+    </div>
+</div>
+
+<% } else { %>
+
+<div class="servers">
+    <h1>Vos serveurs</h1>
+
+    <div class="server-grid">
+        <% guilds.forEach(guild => { %>
+            <div class="card">
+                <h3><%= guild.name %></h3>
+                <a href="/dashboard/<%= guild.id %>">
+                    <button class="btn-primary">Gérer</button>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<% } %>
+
+</body>
+</html>
