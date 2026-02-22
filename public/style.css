@@ -203,3 +203,179 @@ input {
     color: #aaa;
     text-decoration: none;
 }
+
+/* ===== SERVERS GRID ===== */
+
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.server-card {
+  background: #1f1f23;
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.server-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.server-icon {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.server-icon.placeholder {
+  background: #5865f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  color: white;
+}
+
+.servers h1 {
+  margin-bottom: 10px;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #111214;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  padding: 100px 40px;
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* ===== BUTTONS ===== */
+
+.btn-primary {
+  background: #5865f2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #4752c4;
+}
+
+.btn-secondary {
+  background: #2b2d31;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #3a3c42;
+}
+
+/* ===== SERVERS ===== */
+
+.servers {
+  padding: 40px;
+}
+
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.server-card {
+  background: #1e1f23;
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.server-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.server-icon {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.server-icon.placeholder {
+  background: #5865f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  color: white;
+}
