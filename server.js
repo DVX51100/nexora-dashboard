@@ -5,14 +5,35 @@ const session = require('express-session');
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const mongoose = require("mongoose");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
+const MongoStore = require("connect-mongo");
 
 const app = express();
+app.use(helmet({
+  contentSecurityPolicy: false
+}));
 
 
 if (!process.env.SESSION_SECRET) {
   console.error("❌ SESSION_SECRET manquant dans .env");
   process.exit(1);
 }
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 60,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use("/auth", authLimiter);
+app.use("/dashboard", authLimiter);
 
 /* ================= CONFIG EJS ================= */
 
@@ -69,9 +90,16 @@ passport.use(new DiscordStrategy({
 app.set("trust proxy", 1);
 
 app.use(session({
+  name: "nexora.sid",
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    ttl: 60 * 60 * 24 * 7
+  }),
+
   cookie: {
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
